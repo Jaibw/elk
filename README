@@ -32,3 +32,12 @@ curl -X POST -H "Content-Type: application/json" -H "Cache-Control: no-cache" -d
 }' "http://localhost:9200/jai/_doc/"
 
 curl -X GET "localhost:9200/jai/"
+
+
+# Check logs 
+less /var/log/elasticsearch/FILENAME.log
+
+# Check node configuration 
+curl localhost:9200/_cat/nodes?v
+
+
