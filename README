@@ -16,3 +16,19 @@ sudo systemctl start elasticsearch.service
 sudo systemctl enable elasticsearch.service
 curl -X GET "localhost:9200"
 
+ps aux | grep java
+
+sudo systemctl restart elasticsearch.service
+curl -X GET "localhost:9200"
+
+# GET INDEX 
+curl -X GET "localhost:9200/_cat/indices?v"
+# CREATE INDEX 
+curl -X PUT "localhost:9200/NAME"
+
+curl -X POST -H "Content-Type: application/json" -H "Cache-Control: no-cache" -d '{
+"user" : "JAI",
+"message" : "Hello to Elasticsearch"
+}' "http://localhost:9200/jai/_doc/"
+
+curl -X GET "localhost:9200/jai/"
