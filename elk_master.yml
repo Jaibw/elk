@@ -1,0 +1,12 @@
+cluster.name: demo-cluster
+node.name: ES001
+path.data: /var/lib/elasticsearch
+path.logs: /var/log/elasticsearch
+network.host: [_local_, _site_]
+http.port: 9200
+
+node.master: true
+node.data: false
+node.ingest: false
+node.ml: false
+cluster.initial_master_nodes: ["ES001"]
