@@ -1,0 +1,18 @@
+# Install Elastic Search in Ubuntu 20.04
+
+sudo apt update
+sudo apt install openjdk-8-jdk
+java -version
+wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+sudo apt install apt-transport-https
+echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee –a /etc/apt/sources.list.d/elastic-7.x.list
+sudo apt update
+sudo apt install elasticsearch
+sudo cp /etc/elasticsearch/elasticsearch.yml /etc/elasticsearch/elasticsearch.yml.bak
+sudo nano /etc/elasticsearch/elasticsearch.yml
+     network.host: localhost
+     http.port: 9200
+sudo systemctl start elasticsearch.service
+sudo systemctl enable elasticsearch.service
+curl -X GET "localhost:9200"
+
