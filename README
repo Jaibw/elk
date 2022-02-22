@@ -129,3 +129,12 @@ PUT purchase_jan_2022_by_jai
 GET purchase_jan_2022_by_jai
 GET purchase_last_2022_by_jai
 GET _cat/aliases
+
+# LOAD BULK DATA IN ELASTIC SEARCH 
+cd ~
+curl -X PUT "localhost:9200/logs_by_NAME"
+sed 's/logs/logs_by_NAME/g' logs.json > logs_by_NAME.json
+curl -H 'Content-type: application/x-ndjson' http://localhost:9200/logs_by_NAME/_bulk --data-binary @logs_by_NAME.json
+curl -X GET "localhost:9200/logs_by_NAME/_refresh"
+curl -X GET "localhost:9200/_cat/indices?v" | grep logs_by_NAME
+curl -X GET "localhost:9200/logs_by_NAME/_search?pretty=true&q=*:*&size=1"
