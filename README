@@ -71,3 +71,23 @@ cat kibana.yml
 sudo cp kibana.yml /etc/kibana/kibana.yml
 sudo systemctl start kibana
 sudo systemctl enable kibana
+
+# DEV Tools 
+GET /
+GET _license
+GET _cat/health
+GET _cat/health?v
+GET _cat/nodes
+GET _cat/nodes?v
+PUT easy_index_by_NAME                          # create an index 
+GET _cat/indices?help
+GET _cat/indices
+GET _cat/indices?v
+GET _cat/indices?format=json
+GET _cat/indices?format=text
+GET _cat/indices?format=yaml
+GET _cat/indices?format=smile
+GET _cat/indices?format=cbor
+GET _cat/indices?format=json&pretty                
+GET _cat/indices?v&h=health,index&format=text         # select a header 
+GET _cat/indices?s=index:asc                          # sort 
