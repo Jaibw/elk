@@ -56,3 +56,18 @@ sudo cp elasticsearch.yml /etc/elasticsearch/elasticsearch.yml
 sudo systemctl start elasticsearch.service
 sudo systemctl enable elasticsearch.service
 curl -X GET "localhost:9200"
+
+# INSTALL KIBANA 
+sudo apt update
+sudo apt install openjdk-8-jdk
+java -version
+wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+sudo apt install apt-transport-https
+echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee –a /etc/apt/sources.list.d/elastic-7.x.list
+sudo apt update
+sudo apt-get install kibana
+wget https://raw.githubusercontent.com/Jaibw/elk/main/kibana.yml
+cat kibana.yml
+sudo cp kibana.yml /etc/kibana/kibana.yml
+sudo systemctl start kibana
+sudo systemctl enable kibana
