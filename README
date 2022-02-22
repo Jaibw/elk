@@ -138,3 +138,23 @@ curl -H 'Content-type: application/x-ndjson' http://localhost:9200/logs_by_NAME/
 curl -X GET "localhost:9200/logs_by_NAME/_refresh"
 curl -X GET "localhost:9200/_cat/indices?v" | grep logs_by_NAME
 curl -X GET "localhost:9200/logs_by_NAME/_search?pretty=true&q=*:*&size=1"
+
+# CURD IN ELASTIC SEARCH 
+PUT data_by_NAME
+GET data_by_NAME
+POST data_by_NAME/_doc/1
+{
+  "Name" : "NAME",
+  "User" : "user--",
+  "Password" : "pass123"
+}
+GET data_by_NAME/_doc/1
+PUT data_by_NAME/_doc/1 
+{
+  "Name" : "NAME",
+  "User" : "user--",
+  "Password" : "pass123456"
+}
+GET data_by_NAME/_doc/1
+DELETE data_by_NAME/_doc/1
+DELETE data_by_NAME
