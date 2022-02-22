@@ -91,3 +91,41 @@ GET _cat/indices?format=cbor
 GET _cat/indices?format=json&pretty                
 GET _cat/indices?v&h=health,index&format=text         # select a header 
 GET _cat/indices?s=index:asc                          # sort 
+PUT demo_settings_index_by_jai
+{
+  "settings": {
+    "number_of_replicas": 2,
+    "number_of_shards": 1
+  }
+}
+GET _cat/indices?v
+PUT subjects_by_jai
+{
+  "mappings": {
+    "properties": {
+      "name": {
+        "type": "text"
+      },
+      "total_marks": {
+        "type": "float"
+      },
+      "passing_marks": {
+        "type": "float"
+      },
+      "description": {
+        "type": "text"
+      }
+    }
+  }
+}
+GET subjects_by_jai
+GET _cat/indices?v
+PUT purchase_jan_2022_by_jai
+{
+  "aliases": {
+    "purchase_last_2022_by_jai": {}
+  }
+}
+GET purchase_jan_2022_by_jai
+GET purchase_last_2022_by_jai
+GET _cat/aliases
