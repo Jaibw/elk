@@ -1,0 +1,10 @@
+- type: icmp
+  id: my-icmp-monitor
+  name: My ICMP Monitor
+  schedule: '@every 5s'
+  hosts: ["localhost"]
+  ipv4: true
+  ipv6: true
+  mode: any
+  timeout: 16s
+  wait: 1s
