@@ -171,3 +171,17 @@ sudo apt install nginx
 sudo systemctl start nginx 
 sudo systemctl enable nginx
 Open Chrome and access nginx on http://PUBLICIP
+sudo filebeat modules enable nginx
+sudo filebeat modules enable system
+wget https://raw.githubusercontent.com/Jaibw/elk/main/filebeat-template.yml
+sed 's/USERNAME/yourname/g' filebeat-template.yml > filebeat.yml
+sudo cp /etc/filebeat/filebeat.yml /etc/filebeat/filebeat.yml.bak
+sudo cp filebeat.yml /etc/filebeat/filebeat.yml
+sudo filebeat modules list
+sudo systemctl restart filebeat
+sudo systemctl status filebeat
+
+Open DevTools : http://54.176.154.120:5601/app/dev_tools#/console 
+Try below requests - 
+   GET /_cat/indices?v                                  # GET YOUR INDEX NAME 
+   GET /INDEXNAME/_search?pretty=true&q=*:*
