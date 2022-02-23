@@ -217,3 +217,13 @@ systemctl enable heartbeat-elastic
 chkconfig --add heartbeat-elastic
 systemctl start heartbeat-elastic
 systemctl status heartbeat-elastic
+
+# INSTALL PACKET BEAT 
+sudo apt install packetbeat
+wget https://raw.githubusercontent.com/Jaibw/elk/main/packetbeat-template.yml
+sed 's/USERNAME/yourname/g' packetbeat-template.yml > packetbeat.yml
+sudo cp /etc/packetbeat/packetbeat.yml /etc/packetbeat/packetbeat.yml.bak
+sudo cp packetbeat.yml /etc/packetbeat/packetbeat.yml
+sudo systemctl enable packetbeat
+sudo systemctl restart packetbeat
+sudo systemctl status packetbeat
