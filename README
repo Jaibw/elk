@@ -202,3 +202,18 @@ Open DevTools : http://54.176.154.120:5601/app/dev_tools#/console
 Try below requests - 
    GET /_cat/indices?v                                  # GET YOUR INDEX NAME WITH mb-yourname
    GET /INDEXNAME/_search?pretty=true&q=*:*
+
+
+# INSTALL HEARTBEAT IN CENTOS 
+sudo -s -H
+yum install heartbeat-elastic
+wget https://raw.githubusercontent.com/Jaibw/elk/main/heartbeat-template.yml
+wget https://raw.githubusercontent.com/Jaibw/elk/main/icmp.yml
+sed 's/USERNAME/yourname/g' heartbeat-template.yml > heartbeat.yml
+cp /etc/heartbeat/heartbeat.yml /etc/heartbeat/heartbeat.yml.bak
+cp heartbeat.yml /etc/heartbeat/heartbeat.yml
+cp icmp.yml /etc/heartbeat/monitors.d/icmp.yml
+systemctl enable heartbeat-elastic
+chkconfig --add heartbeat-elastic
+systemctl start heartbeat-elastic
+systemctl status heartbeat-elastic
