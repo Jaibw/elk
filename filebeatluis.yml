@@ -1,0 +1,10 @@
+# ======================= Elasticsearch template setting =======================
+
+setup.template.settings:
+  index.number_of_shards: 1
+  #index.codec: best_compression
+  #_source.enabled: false
+output.elasticsearch.index: "customluisluna-%{[agent.version]}"
+setup.template.name: "customluisluna"
+setup.template.pattern: "customluisluna-%{[agent.version]}"
+# ================================== General ===================================
