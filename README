@@ -170,3 +170,4 @@ sudo apt install filebeat
 sudo apt install nginx 
 sudo systemctl start nginx 
 sudo systemctl enable nginx
+Open Chrome and access nginx on http://PUBLICIP
