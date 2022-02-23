@@ -185,3 +185,20 @@ Open DevTools : http://54.176.154.120:5601/app/dev_tools#/console
 Try below requests - 
    GET /_cat/indices?v                                  # GET YOUR INDEX NAME 
    GET /INDEXNAME/_search?pretty=true&q=*:*
+
+
+# METRICBEAT INSTALL
+sudo apt install metricbeat
+sudo metricbeat modules enable nginx
+wget https://raw.githubusercontent.com/Jaibw/elk/main/metricbeat-template.yml
+sed 's/USERNAME/yourname/g' metricbeat-template.yml > metricbeat.yml
+sudo cp /etc/metricbeat/metricbeat.yml /etc/metricbeat/metricbeat.yml.bak
+sudo cp metricbeat.yml /etc/metricbeat/metricbeat.yml
+sudo systemctl enable metricbeat
+sudo systemctl restart metricbeat
+sudo systemctl status metricbeat
+
+Open DevTools : http://54.176.154.120:5601/app/dev_tools#/console 
+Try below requests - 
+   GET /_cat/indices?v                                  # GET YOUR INDEX NAME WITH mb-yourname
+   GET /INDEXNAME/_search?pretty=true&q=*:*
