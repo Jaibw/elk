@@ -249,5 +249,5 @@ sudo cp /etc/logstash/logstash.yml /etc/logstash/logstash.yml.bak
 sudo cp logstash.yml /etc/logstash/logstash.yml
 wget https://raw.githubusercontent.com/Jaibw/elk/main/logstash-filebeat-template.yml
 sudo cp logstash-filebeat-template.yml /etc/filebeat/filebeat.yml
-systemctl restart filebeat
-systemctl start logstash
+sudo systemctl restart filebeat
+sudo systemctl start logstash
