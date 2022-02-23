@@ -1,0 +1,25 @@
+heartbeat.config.monitors:
+  path: ${path.config}/monitors.d/*.yml
+  reload.enabled: false
+  reload.period: 5s
+
+heartbeat.monitors:
+- type: http
+  enabled: false
+  id: my-monitor
+  name: My Monitor
+  urls: ["http://localhost:9200"]
+  schedule: '@every 10s'
+
+setup.template.settings:
+  index.number_of_shards: 1
+  index.codec: best_compression
+
+output.elasticsearch:
+  hosts: ["172.31.9.62:9200"]
+  index: "hb-USERNAME-%{[agent.version]}-%{+yyyy.MM.dd}"
+
+setup.template.enabled: true
+setup.ilm.enabled: false
+setup.template.name: "hb-USERNAME-%{[agent.version]}"
+setup.template.pattern: "hb-USERNAME-%{[agent.version]}-*"
