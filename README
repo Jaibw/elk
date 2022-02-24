@@ -251,3 +251,168 @@ wget https://raw.githubusercontent.com/Jaibw/elk/main/logstash-filebeat-template
 sudo cp logstash-filebeat-template.yml /etc/filebeat/filebeat.yml
 sudo systemctl restart filebeat
 sudo systemctl start logstash
+
+
+GET _cat/nodes?v
+GET _cat/indices?v
+
+GET mb-jaik-7.17.0-2022.02.24
+
+GET mb-jaik-7.17.0-2022.02.24/_search
+
+GET mb-jaik-7.17.0-2022.02.24/_search
+{
+  "query": {
+    "term": {
+      "agent.hostname": {
+        "value": "ip-172-31-15-192"
+      }
+    }
+  }
+}
+
+GET mb-*/_search
+{
+  "query": {
+    "term": {
+      "host.ip": {
+        "value": "172.31.13.188"
+      }
+    }
+  }
+}
+
+GET mb-*/_search
+{
+  "query": {
+    "term": {
+      "host.name": {
+        "value": "172.31.13.188"
+      }
+    }
+  },
+  "_source": ["system", "cloud", "service"]
+}
+
+
+
+
+GET mb-*/_search
+{
+  "size": 5000,
+  "from": 5000
+  , 
+  "query": {
+    "terms": {
+      "agent.hostname" : [
+        "ip-172-31-19-40",
+        "ip-172-31-1-61"
+        ]
+    }
+  }, 
+  "_source": ["agent"]
+}
+
+
+GET mb-adhitya-7.17.0-2022.02.24/_search
+GET mb-jaik-7.17.0-2022.02.23/_search
+
+
+GET mb-adhitya-7.17.0-2022.02.24,mb-jaik-7.17.0-2022.02.23/_search
+{
+  "size": 10000,
+  "_source": ["index"]
+}
+
+## check with Distict 
+GET mb-*/_search
+{
+  "from": 8000,
+  "size": 100,
+  "query": {
+    "term": {
+      "host.ip": {
+        "value": "172.31.0.0/16"
+      }
+    }
+  },
+  "_source": ["host.ip"]
+}
+
+
+
+GET mb-adhitya-7.17.0-2022.02.24,mb-jaik-7.17.0-2022.02.23/_search
+{
+   "_source": ["system.cpu.cores", "cloud.machine.type", "service.type"]
+}
+
+
+
+
+GET _analyze 
+{
+  "analyzer": "english",
+  "text": "this is a simple demo for elastic search"
+}
+
+GET mb-jaik-7.17.0-2022.02.23
+
+GET jaik-7.17.0-2022.02.23/_search
+
+GET */_search
+{
+  "size": 100, 
+ "_source": ["message"]
+}
+
+GET */_search
+{
+ "query": {
+   "match": {
+      "message": "Win32_PnPEntity"
+   }
+ },
+ "_source": ["message"]
+}
+
+
+GET */_search
+{
+ "query": {
+   "match": {
+      "message": "administrator"
+   }
+ },
+ "_source": ["message"]
+}
+
+GET */_search
+{
+ "query": {
+   "match": {
+      "message": "Administrator"
+   }
+ },
+ "_source": ["message"]
+}
+
+GET */_search
+{
+ "query": {
+   "match": {
+      "message": "Admin"
+   }
+ },
+ "_source": ["message"]
+}
+
+GET */_search
+{
+  "size": 100, 
+ "query": {
+   "match": {
+      "message": "Network GUID"
+   }
+ },
+ "_source": ["message"]
+}
