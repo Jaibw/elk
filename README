@@ -685,7 +685,7 @@ GET mb-*/_search
 }
 
 
-# download logstach binay and test your first config
+# download Logstash binay and test your first config
 wget https://artifacts.elastic.co/downloads/logstash/logstash-7.17.0-linux-x86_64.tar.gz
 tar xvfz logstash-7.17.0-linux-x86_64.tar.gz
 cd logstash-7.17.0/
@@ -694,3 +694,21 @@ bin/logstash -f hello-world.conf
 hello       # wait for sometime - 2 m 
 
 Ctrl + C    # to exit from interactive session 
+
+
+# Logstash  Plugins Ref: 
+https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.html
+https://www.elastic.co/guide/en/logstash/current/plugins-inputs-file.html
+https://www.elastic.co/guide/en/logstash/6.8/plugins-inputs-imap.html
+https://www.elastic.co/guide/en/logstash/current/plugins-filters-csv.html
+https://www.elastic.co/guide/en/logstash/current/plugins-outputs-kafka.html
+
+# CSV UPLOAD TO ES - Logstash
+cd ~
+cd logstash-7.17.0/
+bin/logstash-plugin list
+wget https://raw.githubusercontent.com/Jaibw/elk/main/cm23FEB2022bhav.csv
+wget https://raw.githubusercontent.com/Jaibw/elk/main/logstash/csv-upload.conf
+sed 's/USERNAME/name/g' csv-upload.conf > csvupload.conf
+cat csvupload.conf
+bin/logstash -f csvupload.conf 
