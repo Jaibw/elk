@@ -620,3 +620,66 @@ GET */_search
     }
   }
 }
+
+
+GET mb-*/_search
+{
+  "size": 1,
+  "aggs": {
+    "distinct_ips_count": {
+      "cardinality": {
+        "field": "host.ip"
+      }
+    }
+  }, 
+  "query": {
+    "term": {
+      "host.ip": {
+        "value": "172.31.0.0/16"
+      }
+    }
+  },
+  "_source": ["host.ip"]
+}
+
+
+GET mb-*/_search
+{
+  "size": 1,
+  "aggs": {
+    "distinct_ips": {
+      "terms": {
+        "field": "host.ip"
+      }
+    }
+  }, 
+  "query": {
+    "term": {
+      "host.ip": {
+        "value": "172.31.0.0/16"
+      }
+    }
+  },
+  "_source": ["host.ip"]
+}
+
+GET mb-*/_search
+{
+  "size": 0,
+  "aggs": {
+    "distinct_ips": {
+      "terms": {
+        "field": "agent.hostname"
+      }
+    }
+  }, 
+  "query": {
+    "terms": {
+      "agent.hostname" : [
+        "ip-172-31-19-40",
+        "ip-172-31-1-61"
+        ]
+    }
+  }, 
+  "_source": ["agent"]
+}
