@@ -488,3 +488,57 @@ POST _sql?format=txt
 }
 
 
+GET pb-jai-7.17.0-2022.02.24/_search
+GET pb-jai-7.17.0-2022.02.24/_search
+{
+  "aggs": {
+    "max_bytes": {
+      "max": { "field": "source.bytes" }
+    }
+  }, 
+  "_source": ["source.bytes", "source.ip"]
+}
+
+GET pb-jai-7.17.0-2022.02.24/_search
+{
+  "size": 0, 
+  "aggs": {
+    "min_bytes": {
+      "min": { "field": "source.bytes" }
+    }
+  }, 
+  "_source": ["source.bytes", "source.ip"]
+}
+
+GET pb-jai-7.17.0-2022.02.24/_search
+{
+  "size": 0, 
+  "aggs": {
+    "total_bytes": {
+      "sum": { "field": "source.bytes" }
+    }
+  }, 
+  "_source": ["source.bytes", "source.ip"]
+}
+
+GET pb-jai-7.17.0-2022.02.24/_search
+{
+  "size": 0, 
+  "aggs": {
+    "avg_bytes": {
+      "avg": { "field": "source.bytes" }
+    }
+  }, 
+  "_source": ["source.bytes", "source.ip"]
+}
+
+GET pb-*/_search
+{
+  "size": 0, 
+  "aggs": {
+    "avg_bytes": {
+      "avg": { "field": "source.bytes" }
+    }
+  }, 
+  "_source": ["source.bytes", "source.ip"]
+}
