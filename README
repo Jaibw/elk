@@ -416,3 +416,51 @@ GET */_search
  },
  "_source": ["message"]
 }
+
+
+GET */_search
+{
+  "size": 100, 
+ "query": {
+   "match_phrase": {
+      "message": "Password Last Set"
+   }
+ },
+ "_source": ["message"]
+}
+
+
+GET */_search
+{
+  "size": 100, 
+ "query": {
+   "match_phrase_prefix": {
+      "message": "SAM"
+   }
+ },
+ "_source": ["message"]
+}
+
+
+GET */_search
+{
+  "size": 100, 
+ "query": {
+   "match_phrase_prefix": {
+      "message": "ADMIN"
+   }
+ },
+ "_source": ["message"]
+}
+
+
+GET .ds-winlog-8.0.0-2022.02.10-2022.02.23-000001/_search
+{
+ "size": 10, 
+ "query": {
+   "match_phrase_prefix": {
+      "message": "Password Policy"
+   }
+ },
+ "_source": ["message"]
+}
