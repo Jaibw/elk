@@ -542,3 +542,81 @@ GET pb-*/_search
   }, 
   "_source": ["source.bytes", "source.ip"]
 }
+
+GET jaik-7.17.0-2022.02.23/_search
+{
+  "size": 0, 
+  "aggs": {
+    "events_per_hour": {
+      "date_histogram": {
+        "field": "@timestamp",
+        "calendar_interval": "day"
+      }
+    }
+  }
+}
+
+GET jaik-7.17.0-2022.02.23/_search
+{
+  "size": 0, 
+  "aggs": {
+    "events_per_hour": {
+      "date_histogram": {
+        "field": "@timestamp",
+        "calendar_interval": "hour"
+      }
+    }
+  }
+}
+
+GET jaik-7.17.0-2022.02.23/_search
+{
+  "size": 0, 
+  "aggs": {
+    "events_per_hour": {
+      "date_histogram": {
+        "field": "@timestamp",
+        "calendar_interval": "month"
+      }
+    }
+  }
+}
+
+GET */_search
+{
+  "size": 0, 
+  "aggs": {
+    "events_per_hour": {
+      "date_histogram": {
+        "field": "@timestamp",
+        "calendar_interval": "day"
+      }
+    }
+  }
+}
+
+GET */_search
+{
+  "size": 0, 
+  "aggs": {
+    "events_per_hour": {
+      "date_histogram": {
+        "field": "@timestamp",
+        "calendar_interval": "hour"
+      }
+    }
+  }
+}
+
+GET */_search
+{
+  "size": 0, 
+  "aggs": {
+    "events_per_hour": {
+      "date_histogram": {
+        "field": "@timestamp",
+        "calendar_interval": "month"
+      }
+    }
+  }
+}
