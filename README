@@ -683,3 +683,14 @@ GET mb-*/_search
   }, 
   "_source": ["agent"]
 }
+
+
+# download logstach binay and test your first config
+wget https://artifacts.elastic.co/downloads/logstash/logstash-7.17.0-linux-x86_64.tar.gz
+tar xvfz logstash-7.17.0-linux-x86_64.tar.gz
+cd logstash-7.17.0/
+wget https://raw.githubusercontent.com/Jaibw/elk/main/logstash/hello-world.conf
+bin/logstash -f hello-world.conf        
+hello       # wait for sometime - 2 m 
+
+Ctrl + C    # to exit from interactive session 
