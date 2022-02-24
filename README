@@ -464,3 +464,18 @@ GET .ds-winlog-8.0.0-2022.02.10-2022.02.23-000001/_search
  },
  "_source": ["message"]
 }
+
+POST _sql?format=txt
+{
+  "query": """
+  SELECT * FROM ".tasks"
+  """
+}
+
+POST _sql?format=txt
+{
+  "query": """
+  SELECT ecs.version, host.hostname, host.os.version, system.load.cores  FROM "mb-jaik-7.17.0-2022.02.24" limit 10
+ 
+  """
+}
